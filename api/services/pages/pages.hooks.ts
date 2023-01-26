@@ -1,11 +1,12 @@
+import { createdAt, updatedAt } from '../../app.hooks'
 
 export default {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [],
-    update: [],
+    create: [createdAt],
+    update: [updatedAt],
     patch: [],
     remove: []
   },

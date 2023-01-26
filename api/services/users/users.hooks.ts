@@ -1,8 +1,5 @@
-// import * as feathersAuthentication from '@feathersjs/authentication'
 import * as local from '@feathersjs/authentication-local'
-// Don't remove this comment. It's needed to format import lines nicely.
-
-// const { authenticate } = feathersAuthentication.hooks
+import { createdAt } from '../../app.hooks'
 const { hashPassword, protect } = local.hooks
 
 export default {
@@ -10,7 +7,7 @@ export default {
     all: [],
     find: [],
     get: [],
-    create: [hashPassword('password')],
+    create: [hashPassword('password'), createdAt],
     update: [hashPassword('password')],
     patch: [hashPassword('password')],
     remove: []

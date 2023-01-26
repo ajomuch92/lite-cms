@@ -1,13 +1,14 @@
+import { notFound } from '../../app.hooks'
 
 export default {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [],
-    update: [],
-    patch: [],
-    remove: []
+    create: [notFound],
+    update: [notFound],
+    patch: [notFound],
+    remove: [notFound]
   },
 
   after: {

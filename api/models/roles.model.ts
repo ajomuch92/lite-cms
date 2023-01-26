@@ -1,5 +1,6 @@
 import { Knex } from 'knex'
 import { Application } from '../declarations'
+import { seedRoles } from '../seed'
 
 export default function (app: Application): Knex {
   const db: Knex = app.get('knexClient')
@@ -12,6 +13,7 @@ export default function (app: Application): Knex {
 
         table.string('name').unique().notNullable()
       })
+      seedRoles(app)
     }
   })
 

@@ -9,7 +9,7 @@ export default function (app: Application): Knex {
     if (!exists) {
       await db.schema.createTable(tableName, (table) => {
         table.increments('id').primary()
-
+        table.string('name').notNullable()
         table.string('username').unique().notNullable()
         table.string('password').notNullable()
         table.string('uid')
@@ -26,6 +26,7 @@ export default function (app: Application): Knex {
 
 export interface User {
   id: Number;
+  name: String | string;
   username: String | string;
   password: String | string;
   uid: String | string;

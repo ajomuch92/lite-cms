@@ -26,7 +26,7 @@ export default function (app: Application): Knex {
 }
 
 export interface Setting {
-  id: Number;
+  id?: Number;
   siteName: String | string;
   description?: String | string;
   timezone?: String | string;

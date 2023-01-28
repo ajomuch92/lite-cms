@@ -1,6 +1,7 @@
 import { Knex } from 'knex'
+import { v4 as uuidv4 } from 'uuid'
 import { Application } from '../../declarations'
-import { Setting } from '~/api/models'
+import { Page, Setting } from '~/api/models'
 
 export class Install {
   private app: Application
@@ -24,15 +25,23 @@ export class Install {
 
   async create (data: Setting, _: any) {
     try {
-      const { install } = await this.find()
-      if (install) {
-        const db: Knex = this.app.get('knexClient')
-        const result: Array<number> = await db.table('settings').insert(data)
-        data.id = result[0]
-        return data
+      const db: Knex = this.app.get('knexClient')
+      const { user } = data
+      delete data.user
+      const result: Array<number> = await db.table('settings').insert(data)
+      await db.table('users').insert(user || {})
+      data.id = result[0]
+      const firstPage: Page = {
+        author: data.id,
+        title: 'Hello World',
+        content: '<h1>Hello World</h1>',
+        createdAt: new Date(),
+        uid: uuidv4(),
+        status: 'published'
       }
-      return {}
-    } catch {
+      await db.table('pages').insert(firstPage)
+      return data
+    } catch (err) {
       return []
     }
   }

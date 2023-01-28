@@ -1,5 +1,6 @@
 import { Knex } from 'knex'
 import { Application } from '../declarations'
+import { User } from './users.model'
 
 export default function (app: Application): Knex {
   const db: Knex = app.get('knexClient')
@@ -35,4 +36,5 @@ export interface Setting {
   email?: String | string;
   misc?: String | string | Object;
   createdAt: Date;
+  user?: User;
 }

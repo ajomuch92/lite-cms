@@ -28,13 +28,13 @@ export default function (app: Application): Knex {
 }
 
 export interface Page {
-  id: Number;
-  uid: String | string;
-  title: String | string;
-  content: String | string;
-  status: String | string;
-  parentId: Number;
-  author: Number;
+  id?: Number;
+  uid?: String | string;
+  title?: String | string;
+  content?: String | string;
+  status?: String | string;
+  parentId?: Number;
+  author?: Number;
   createdAt: Date;
-  updatedAt: Date;
+  updatedAt?: Date;
 }

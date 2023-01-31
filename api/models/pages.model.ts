@@ -35,6 +35,6 @@ export interface Page {
   status?: String | string;
   parentId?: Number;
   author?: Number;
-  createdAt: Date;
+  createdAt?: Date;
   updatedAt?: Date;
 }

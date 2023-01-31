@@ -7,7 +7,7 @@ export { Role } from './roles.model'
 export { Setting } from './settings.model'
 export { User } from './users.model'
 
-export interface response {
+export interface ResponseApi {
   total?: number
   limit?: number
   skip?: number

@@ -1,5 +1,6 @@
 import { HookContext } from '@feathersjs/feathers'
 import { NotFound } from '@feathersjs/errors'
+import { v4 as uuidv4 } from 'uuid'
 
 const createdAt = (context: HookContext) => {
   context.data.createdAt = new Date()
@@ -30,9 +31,15 @@ const authorHook = async (context: HookContext) => {
   return context
 }
 
+const uuidHook = (context: HookContext) => {
+  context.data.uid = uuidv4()
+  return context
+}
+
 export {
   createdAt,
   updatedAt,
   notFound,
-  authorHook
+  authorHook,
+  uuidHook
 }

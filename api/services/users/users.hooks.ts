@@ -1,5 +1,5 @@
 import * as local from '@feathersjs/authentication-local'
-import { createdAt } from '../../app.hooks'
+import { createdAt, uuidHook } from '../../app.hooks'
 const { hashPassword, protect } = local.hooks
 
 export default {
@@ -7,7 +7,7 @@ export default {
     all: [],
     find: [],
     get: [],
-    create: [hashPassword('password'), createdAt],
+    create: [hashPassword('password'), createdAt, uuidHook],
     update: [hashPassword('password')],
     patch: [hashPassword('password')],
     remove: []

@@ -38,7 +38,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/auth'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -64,5 +65,32 @@ export default {
     }
   },
 
-  serverMiddleware: ['~/api/index']
+  serverMiddleware: ['~/api/index'],
+  auth: {
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/'
+    },
+    strategies: {
+      local: {
+        token: {
+          property: 'accessToken',
+          global: true
+        },
+        user: {
+          property: 'user',
+          autoFetch: false
+        },
+        endpoints: {
+          login: {
+            url: 'api/authentication',
+            method: 'post'
+          },
+          user: false
+        }
+      }
+    }
+  }
 }

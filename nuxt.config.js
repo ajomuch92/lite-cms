@@ -67,11 +67,14 @@ export default {
 
   serverMiddleware: ['~/api/index'],
   auth: {
+    localStorage: {
+      prefix: 'lite-cms.'
+    },
     redirect: {
       login: '/login',
       logout: '/',
-      callback: '/login',
-      home: '/'
+      callback: '/',
+      home: '/dashboard'
     },
     strategies: {
       local: {
@@ -88,7 +91,8 @@ export default {
             url: 'api/authentication',
             method: 'post'
           },
-          user: false
+          user: false,
+          logout: false
         }
       }
     }

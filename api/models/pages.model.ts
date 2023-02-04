@@ -14,6 +14,7 @@ export default function (app: Application): Knex {
         table.string('content').notNullable()
         table.string('status').notNullable()
         table.integer('parentId')
+        table.integer('views')
         table.integer('author')
         table.dateTime('createdAt')
         table.dateTime('updatedAt')

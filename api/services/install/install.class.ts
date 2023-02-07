@@ -34,7 +34,12 @@ export class Install {
       const firstPage: Page = {
         author: data.id,
         title: 'Hello World',
-        content: '<h1>Hello World</h1>',
+        content: `
+          <h1>
+            Hello World
+          </h1>
+          <br />
+          <p>Begin to edit this page. But please, before login</p>`,
         createdAt: new Date(),
         uid: uuidv4(),
         status: 'published'
